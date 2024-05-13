@@ -13,6 +13,7 @@
 5. Then press "e" to export as an image. (May take a while)
 
 # Planned Features
+- Proper Exporing (10 cards per row)
 - Proper deck building
 - Modular structure (As in you don't have to manually edit the code to work with your template)
 - UI/Code improvements
