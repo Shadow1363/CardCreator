@@ -13,9 +13,9 @@
 5. Then press "e" to export as an image. (May take a while)
 
 # Planned Features
-- Proper Exporting (10 cards per row)
-- Proper deck building
+- Hidden Card + Back Art Card Exporter
+- Proper deck building (Search bar, have full cardlist seperate from exporting/making deck)
 - Modular structure (As in you don't have to manually edit the code to work with your template)
 - UI/Code improvements
 - Simple paint program to add card art.
-- Personal wiki page
+- My own card wiki page
