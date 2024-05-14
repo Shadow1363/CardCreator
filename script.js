@@ -151,16 +151,21 @@ function parseTSV(tsvString) {
 
 function largeImage() {
   const smallCanvasElements = document.getElementsByClassName("card");
+  const CARDS_PER_ROW = 10;
 
   const largeCanvas = document.createElement("canvas");
   const ctx = largeCanvas.getContext("2d");
 
-  largeCanvas.width = smallCanvasElements.length * C_WIDTH;
-  largeCanvas.height = C_HEIGHT;
+  largeCanvas.width = CARDS_PER_ROW * C_WIDTH;
+  largeCanvas.height =
+    C_HEIGHT * Math.ceil(smallCanvasElements.length / CARDS_PER_ROW);
+
   for (let i = 0; i < smallCanvasElements.length; i++) {
     const smallCanvas = smallCanvasElements[i];
     const smallCtx = smallCanvas.getContext("2d");
-    ctx.drawImage(smallCtx.canvas, i * C_WIDTH, 0);
+    const x = (i % CARDS_PER_ROW) * C_WIDTH;
+    const y = Math.floor(i / CARDS_PER_ROW) * C_HEIGHT;
+    ctx.drawImage(smallCtx.canvas, x, y);
   }
 
   const dataUrl = largeCanvas.toDataURL("image/png");
