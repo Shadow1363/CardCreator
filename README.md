@@ -14,6 +14,8 @@
 
 # Planned Features
 - Hidden Card + Back Art Card Exporter
+- Export an Image that can be imported to import deck (Pico-8)
+- Chart.Js integration (See cost curve, type split, etc)
 - Proper deck building (Search bar, have full cardlist seperate from exporting/making deck)
 - Modular structure (As in you don't have to manually edit the code to work with your template)
 - UI/Code improvements
