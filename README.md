@@ -2,7 +2,8 @@
  - Import a .tsv to generate cards. 
  - Perfect for quick protyping and exporting to Table Top Sim.
 
- ![image](https://github.com/Shadow1363/Sheet2Card/assets/112425274/6be3b358-7cac-4cf1-8371-935f1f2be49c)
+![image](https://github.com/Shadow1363/Sheet2Card/assets/112425274/7da879c6-b87f-4bfb-9aef-54dd0edc8e4c)
+
  
 # How to use
 1. Download repo and open the html in your browser.
