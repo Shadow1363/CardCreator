@@ -6,7 +6,7 @@
 
  
 # How to use
-1. Download Repo or open the html in your browser.
+1. Go to https://shadow1363.github.io/Sheet2Card/
 2. Upload a .tsv file that follows has this as a header:
 ![image](https://github.com/Shadow1363/HolySheet/assets/112425274/2464f1c8-e9fa-4a46-8d50-b2d0cab583ab)
 3. Use the search + checkboxes to filter and find the cards you need
