@@ -1,7 +1,13 @@
 // Width x Height
 const C_WIDTH = 250;
 const C_HEIGHT = C_WIDTH * 1.4;
+
+// Other Vars
 let cardsLoaded = false;
+let allCards = [];
+let deck = [];
+// #FFC138 - Orange
+// #FFEC66 - Yellow
 
 // Functions
 function flavorSplit(str) {
@@ -24,18 +30,23 @@ function abilitySplit(str) {
   }
 }
 
-function card(obj) {
+function createCard(obj) {
+  const C_ID = obj.ID;
+  if (!C_ID) {
+    return;
+  }
   const C_TYPE = obj.Type;
   const C_NAME = obj.Name;
   const C_COST = obj.Cost;
   const C_ATTACK = obj.Attack;
   const C_HEALTH = obj.Health;
-  if (!C_TYPE || !C_NAME || !C_COST) {
-    return;
-  }
+  const C_ABILITY = obj.Abilities;
+  const C_FLAVOR = obj.Quote;
+  const C_RARITY = obj.Rarity;
+
   const C = document.createElement("canvas");
-  document.body.appendChild(C);
-  C.id = `card_${obj.ID}`;
+  document.getElementById("displayZone").appendChild(C);
+  C.id = C_ID;
   C.className = "card";
   C.style.borderRadius = `${C_WIDTH * 0.04}px`;
   C.style.border = `${C_WIDTH * 0.008}px solid #000000`;
@@ -43,8 +54,8 @@ function card(obj) {
   C.height = C_HEIGHT;
   const CTX = C.getContext("2d");
 
-  let cFlavor = `${obj.Quote}`;
-  let cAbility = `${obj.Abilities}`;
+  let cFlavor = C_FLAVOR;
+  let cAbility = C_ABILITY;
   cFlavor = flavorSplit(cFlavor);
   cAbility = abilitySplit(cAbility);
 
@@ -128,9 +139,21 @@ function card(obj) {
   CTX.font = `italic ${C_WIDTH * 0.08}px 'Bai Jamjuree'`;
   CTX.fillText(cFlavor[1], C_WIDTH * 0.4, C_WIDTH * 1.37, C_WIDTH * 0.6);
 
-  // Click to delete
   C.addEventListener("click", function () {
-    document.body.removeChild(C);
+    deck.push({
+      ID: C_ID,
+      Cost: C_COST,
+      Attack: C_ATTACK,
+      Health: C_HEALTH,
+      Abilities: C_ABILITY,
+      Quote: C_FLAVOR,
+      Rarity: C_RARITY,
+      Type: C_TYPE,
+      Name: C_NAME,
+    });
+    console.log(deck);
+    document.getElementById("totalDeck").textContent =
+      "Total Cards in Deck: " + deck.length;
   });
 }
 
@@ -181,30 +204,124 @@ document.getElementById("tsvFile").addEventListener("change", function (evt) {
   let reader = new FileReader();
   reader.onload = function (e) {
     let tsvString = e.target.result;
-    let data = parseTSV(tsvString);
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i])
-      card(data[i]);
-      if (data[i].Rarity != "Legendary") {
-        card(data[i]);
-      }
+    allCards = parseTSV(tsvString);
+    for (let i = 0; i < allCards.length; i++) {
+      createCard(allCards[i]);
     }
     cardsLoaded = true;
+    document.getElementById("totalCards").textContent =
+      "Total Cards: " + document.getElementsByClassName("card").length;
+    console.log(allCards);
   };
   reader.readAsText(file);
 });
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "e" && cardsLoaded) {
+function download() {
+  let cards = document.getElementsByClassName("card");
+
+  if (cardsLoaded) {
+    while (cards.length > 0) {
+      cards[0].parentNode.removeChild(cards[0]);
+    }
+    for (let i = 0; i < deck.length; i++) {
+      createCard(deck[i]);
+    }
     largeImage();
   }
-});
+}
 
-setInterval(function () {
+function search() {
+  const idCard = document.getElementById("idCard").checked;
+  const typeCard = document.getElementById("typeCard").checked;
+  const nameCard = document.getElementById("nameCard").checked;
+  const abilityCard = document.getElementById("abilityCard").checked;
+
+  const flavorCard = document.getElementById("flavorCard").checked;
+  const costCard = document.getElementById("costCard").checked;
+  const healthCard = document.getElementById("healthCard").checked;
+  const attackCard = document.getElementById("attackCard").checked;
+  const rarityCard = document.getElementById("rarityCard").checked;
+
+  let searchCard = document.getElementById("searchCard").value;
   let cards = document.getElementsByClassName("card");
-  document.getElementById("totalCards").textContent =
-    "Total Cards: " + cards.length;
-});
 
+  if (searchCard !== "") {
+    while (cards.length > 0) {
+      cards[0].parentNode.removeChild(cards[0]);
+    }
+    for (let i = 0; i < allCards.length; i++) {
+      if (
+        !idCard &&
+        !typeCard &&
+        !nameCard &&
+        !abilityCard &&
+        !flavorCard &&
+        !costCard &&
+        !healthCard &&
+        !attackCard &&
+        !rarityCard
+      ) {
+        createCard(allCards[i]);
+      } else if (
+        (allCards[i].ID.toLowerCase().includes(searchCard.toLowerCase()) &&
+          idCard) ||
+        (allCards[i].Type.toLowerCase().includes(searchCard.toLowerCase()) &&
+          typeCard) ||
+        (allCards[i].Name.toLowerCase().includes(searchCard.toLowerCase()) &&
+          nameCard) ||
+        (allCards[i].Abilities.toLowerCase().includes(
+          searchCard.toLowerCase()
+        ) &&
+          abilityCard) ||
+        (allCards[i].Quote.toLowerCase().includes(searchCard.toLowerCase()) &&
+          flavorCard) ||
+        (allCards[i].Cost.toLowerCase().includes(searchCard.toLowerCase()) &&
+          costCard) ||
+        (allCards[i].Health.toLowerCase().includes(searchCard.toLowerCase()) &&
+          healthCard) ||
+        (allCards[i].Attack.toLowerCase().includes(searchCard.toLowerCase()) &&
+          attackCard) ||
+        (allCards[i].Rarity.toLowerCase().includes(searchCard.toLowerCase()) &&
+          rarityCard)
+      ) {
+        createCard(allCards[i]);
+      }
+    }
+    document.getElementById("totalCards").textContent =
+      "Total Cards: " + cards.length;
+  }
+}
 
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+// Chart.Js
+/*
+const xValues = [
+  "Warrior",
+  "Magic",
+  "Light",
+  "Dark",
+  "Nature",
+  "Fire",
+  "Water",
+];
+const yValues = [55, 49, 44, 24, 15];
+const barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+new Chart("typeSpread", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [
+      {
+        backgroundColor: barColors,
+        data: yValues,
+      },
+    ],
+  },
+  options: {
+    title: {
+      display: false,
+    },
+  },
+});
+*/
