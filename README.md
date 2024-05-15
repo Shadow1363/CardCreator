@@ -8,12 +8,12 @@
 1. Download repo and open the html in your browser.
 2. Upload a .tsv file that follows has this as a header:
 ![image](https://github.com/Shadow1363/Sheet2Card/assets/112425274/2464f1c8-e9fa-4a46-8d50-b2d0cab583ab)
-3. For my use case, the max limit of cards is 2 copies so it loads the file twice.
-4. Click on cards to remove them to create your own deck.
-5. Then press "e" to export as an image. (May take a while)
+3. Use the search + checkboxes to filter and find the cards you need
+4. Click on cards to add them to create your own deck.
+5. Then click on download.
 
 # Planned Features
-- Proper deck building
+- Proper deck building (50% of the way there)
 - Modular structure (As in you don't have to manually edit the code to work with your template)
 - UI/Code improvements
 - Simple paint program to add card art.
