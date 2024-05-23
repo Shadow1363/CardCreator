@@ -1,4 +1,4 @@
- # Holy Sheet
+ # Card Creator
  - Create your own Card game by just importing a .tsv (From a Google/Excel Sheet)
  - Perfect for quick protyping and exporting to Table Top Sim.
 
