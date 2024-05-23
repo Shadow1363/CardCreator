@@ -16,6 +16,6 @@
 # Planned Features
 - Proper deck building (50% of the way there)
 - Modular structure (As in you don't have to manually edit the code to work with your template)
-- UI/Code improvements
+- UI/Code improvements (CSS, Chart.JS Integration, modern look etc)
 - Simple paint program to add card art.
 - ~Personal wiki page~ (Created, see [here!](https://github.com/Shadow1363/HolySheet/wiki))
