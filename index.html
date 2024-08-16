@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="header" class="center">
+      <div id="deckButton">
+        <input
+          type="file"
+          id="tsvFile"
+          name="tsvFile"
+          accept=".tsv"
+          style="display: none"
+        />
+        <label for="tsvFile" class="custom-file-upload">Choose File</label>
+        <button id="downloadDeck">Download Deck</button>
+      </div>
+
+      <div id="deckText">
+        <p id="totalCards"><b>Total Cards:</b> 0</p>
+        <p id="totalDeck"><b>Total Cards in Deck:</b> 0</p>
+      </div>
+
+      <div style="width: 500px">
+        <canvas id="deckChart"></canvas>
+      </div>
+
+      <div style="height: 150px; width: 150px">
+        <canvas id="typeChart"></canvas>
+      </div>
+    </div>
+
+    <div class="displayZone" id="displayZone"></div>
+    <div class="deckZone" id="deckZone"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

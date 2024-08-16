@@ -1,0 +1,42 @@
+{
+  "card": {
+    "width": 250,
+    "backColors": ["#FFC138", "#FFEC66"],
+    "logo": "",
+    "border": true
+  },
+  "font": {
+    "name": "Bai Jamjuree",
+    "color": "#000000"
+  },
+  "types": {
+    "water": {
+      "mainColor": "#00A6A6",
+      "secColor": "#BBDEF0"
+    },
+    "fire": {
+      "mainColor": "#EC4E20",
+      "secColor": "#FEC0AA"
+    },
+    "nature": {
+      "mainColor": "#51CB20",
+      "secColor": "#76B041"
+    },
+    "light": {
+      "mainColor": "#E6D3A3",
+      "secColor": "#F6FEDB"
+    },
+    "dark": {
+      "mainColor": "#333333",
+      "secColor": "#643173"
+    },
+    "magic": {
+      "mainColor": "#49306B",
+      "secColor": "#635380"
+    },
+    "warrior": {
+      "mainColor": "#7A7D7D",
+      "secColor": "#FFFBFE"
+    }
+  }
+}
