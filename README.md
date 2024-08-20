@@ -19,5 +19,5 @@
    - Add search + filters
 2. ~Modular structure~ (Full modularity will come soon.)
 3. ~UI/Code improvements~ (Done)
-4. Simple paint program to add card art.
+4. Simple paint program or upload an image to add card art. Then it would have to save it somewhere.
 5. ~Personal wiki page~ (Created, see [here!](https://github.com/Shadow1363/HolySheet/wiki))
